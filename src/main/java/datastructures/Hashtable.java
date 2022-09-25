@@ -9,14 +9,6 @@ public class Hashtable {
     private static class Bucket extends ArrayList<Node> {
     }
 
-    public static void main(String[] args) {
-        Hashtable test = new Hashtable(500);
-        test.put("Sergi",20);
-        test.put("Sergi",20);
-        test.put("Quique",43);
-        System.out.println(test.getKeys());
-    }
-
     private final Bucket[] buckets;
 
     private final int size;
@@ -33,6 +25,7 @@ public class Hashtable {
         }
         return hash;
     }
+
     public void put(String key, int value) {
         int memoryAddress = hash(key);
 
@@ -56,17 +49,17 @@ public class Hashtable {
         return 0;
     }
 
-    public ArrayList<String> getKeys(){
+    public ArrayList<String> getKeys() {
         ArrayList<String> keys = new ArrayList<>();
 
         for (int i = 0; i < buckets.length; i++) {
-            if(buckets[i] != null){
-                if(buckets[i].size() > 1){
+            if (buckets[i] != null) {
+                if (buckets[i].size() > 1) {
                     for (int j = 0; j < buckets[i].size(); j++) {
-                        keys.add ((String) buckets[i].get(j).getKey());
+                        keys.add((String) buckets[i].get(j).getKey());
                     }
-                }else{
-                    keys.add ((String) buckets[i].get(0).getKey());
+                } else {
+                    keys.add((String) buckets[i].get(0).getKey());
                 }
 
             }
