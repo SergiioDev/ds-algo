@@ -1,11 +1,20 @@
 package datastructures;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Hashtable {
 
     // class that will work as a bucket to store the nodes
     private static class Bucket extends ArrayList<Node> {
+    }
+
+    public static void main(String[] args) {
+        Hashtable test = new Hashtable(500);
+        test.put("Sergi",20);
+        test.put("Sergi",20);
+        test.put("Quique",43);
+        System.out.println(test.getKeys());
     }
 
     private final Bucket[] buckets;
@@ -24,8 +33,6 @@ public class Hashtable {
         }
         return hash;
     }
-
-
     public void put(String key, int value) {
         int memoryAddress = hash(key);
 
@@ -47,6 +54,26 @@ public class Hashtable {
             }
         }
         return 0;
+    }
+
+    public ArrayList<String> getKeys(){
+        ArrayList<String> keys = new ArrayList<>();
+
+        for (int i = 0; i < buckets.length; i++) {
+            if(buckets[i] != null){
+                if(buckets[i].size() > 1){
+                    for (int j = 0; j < buckets[i].size(); j++) {
+                        keys.add ((String) buckets[i].get(j).getKey());
+                    }
+                }else{
+                    keys.add ((String) buckets[i].get(0).getKey());
+                }
+
+            }
+
+        }
+        return keys;
+
     }
 
 }
