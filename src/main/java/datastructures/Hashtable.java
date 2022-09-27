@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Hashtable {
 
     // class that will work as a bucket to store the nodes
-    private static class Bucket extends ArrayList<Node> {
+    private static class Bucket extends ArrayList<HashTableNode> {
     }
 
     private final Bucket[] buckets;
@@ -32,14 +32,14 @@ public class Hashtable {
             buckets[memoryAddress] = new Bucket();
         }
 
-        buckets[memoryAddress].add(new Node(key, value));
+        buckets[memoryAddress].add(new HashTableNode(key, value));
 
     }
 
     public Object get(String key) {
         int memoryAddress = hash(key);
         if (buckets[memoryAddress] != null) {
-            for (Node n : buckets[memoryAddress]) {
+            for (HashTableNode n : buckets[memoryAddress]) {
                 if (n.getKey().equals(key)) {
                     return n.getValue();
                 }
@@ -70,12 +70,12 @@ public class Hashtable {
 
 }
 
-class Node<T, U> {
+class HashTableNode<T, U> {
     private final T key;
 
     private U value;
 
-    public Node(T key, U value) {
+    public HashTableNode(T key, U value) {
         this.key = key;
         this.value = value;
     }
