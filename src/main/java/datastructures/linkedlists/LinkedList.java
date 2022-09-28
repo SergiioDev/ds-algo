@@ -34,14 +34,4 @@ public class LinkedList {
         }
     }
 
-
-    public static void main(String[] args) {
-        LinkedList test = new LinkedList(10);
-        test.append(5);
-        test.append(16);
-        test.prepend(1);
-        test.print();
-    }
-
-
 }
