@@ -5,20 +5,20 @@ public class LinkedList {
     private NodeLinkedList tail;
     private int length;
 
-    public LinkedList(int data){
+    public LinkedList (int data){
         this.head = new NodeLinkedList(data);
         this.tail = head;
         length++;
     }
 
-    public void prepend(int data){
+    public void prepend (int data){
         NodeLinkedList node = new NodeLinkedList(data);
         node.setNext(head);
         this.head = node;
         length++;
     }
 
-    public void append(int data){
+    public void append (int data){
         NodeLinkedList node = new NodeLinkedList(data);
         tail.setNext(node);
         tail = node;
@@ -28,7 +28,7 @@ public class LinkedList {
     public void print(){
         NodeLinkedList currentNode = head;
 
-        while(currentNode != null){
+        while (currentNode != null){
             System.out.printf(currentNode.getData()+"--->");
             currentNode = currentNode.getNext();
         }
