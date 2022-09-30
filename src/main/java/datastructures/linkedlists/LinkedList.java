@@ -1,7 +1,5 @@
 package datastructures.linkedlists;
 
-import org.w3c.dom.Node;
-
 public class LinkedList {
     private NodeLinkedList head;
     private NodeLinkedList tail;
