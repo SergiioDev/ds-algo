@@ -27,34 +27,34 @@ public class LinkedList {
         length++;
     }
 
-    public void insert (int index, int data){
-        NodeLinkedList preNode = head;
-        NodeLinkedList createdNode = new NodeLinkedList(data);
 
-        for (int i = 0; i < index - 1 ; i++) {
-           preNode = preNode.getNext();
+    public void insert(int index, int value){
+        NodeLinkedList currentNode = head;
+        NodeLinkedList created = new NodeLinkedList(value);
+        for (int i = 0; i < index - 1; i++) {
+            currentNode = head.getNext();
         }
-
-        createdNode.setNext(preNode.getNext());
-        preNode.setNext(createdNode);
-
+        created.setNext(currentNode.getNext());
+        currentNode.setNext(created);
     }
 
-    public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList(5);
-        linkedList.append(16);
-        linkedList.append(17);
-        linkedList.append(18);
-        linkedList.insert(2,10);
-        linkedList.print();
+    public void remove(int index){
+        NodeLinkedList currentNode = head;
+        for (int i = 0; i < index - 1; i++) {
+            currentNode = head.getNext();
+        }
+        NodeLinkedList deletedNode = currentNode.getNext();
+        currentNode.setNext(deletedNode.getNext());
     }
+
     public void print(){
         NodeLinkedList currentNode = head;
-
         while (currentNode != null){
             System.out.printf(currentNode.getData()+"--->");
             currentNode = currentNode.getNext();
+
         }
+        System.out.println();
     }
 
 }
