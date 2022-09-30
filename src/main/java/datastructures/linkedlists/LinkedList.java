@@ -7,20 +7,20 @@ public class LinkedList {
     private NodeLinkedList tail;
     private int length;
 
-    public LinkedList (int data){
+    public LinkedList(int data) {
         this.head = new NodeLinkedList(data);
         this.tail = head;
         length++;
     }
 
-    public void prepend (int data){
+    public void prepend(int data) {
         NodeLinkedList node = new NodeLinkedList(data);
         node.setNext(head);
         this.head = node;
         length++;
     }
 
-    public void append (int data){
+    public void append(int data) {
         NodeLinkedList node = new NodeLinkedList(data);
         tail.setNext(node);
         tail = node;
@@ -28,29 +28,44 @@ public class LinkedList {
     }
 
 
-    public void insert(int index, int value){
-        NodeLinkedList currentNode = head;
+    public NodeLinkedList insert(int index, int value) {
         NodeLinkedList created = new NodeLinkedList(value);
+
+        if (index <=0){
+            created.setNext(head);
+            head = created;
+        }
+
+        if (index >= length) {
+            tail.setNext(created);
+            tail = created;
+            return created;
+        }
+
+        NodeLinkedList currentNode = head;
         for (int i = 0; i < index - 1; i++) {
             currentNode = head.getNext();
         }
+
         created.setNext(currentNode.getNext());
         currentNode.setNext(created);
+        return created;
     }
 
-    public void remove(int index){
+    public void remove(int index) {
         NodeLinkedList currentNode = head;
         for (int i = 0; i < index - 1; i++) {
             currentNode = head.getNext();
         }
         NodeLinkedList deletedNode = currentNode.getNext();
         currentNode.setNext(deletedNode.getNext());
+        length--;
     }
 
-    public void print(){
+    public void print() {
         NodeLinkedList currentNode = head;
-        while (currentNode != null){
-            System.out.printf(currentNode.getData()+"--->");
+        while (currentNode != null) {
+            System.out.printf(currentNode.getData() + "--->");
             currentNode = currentNode.getNext();
 
         }
