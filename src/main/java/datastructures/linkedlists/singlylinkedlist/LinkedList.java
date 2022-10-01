@@ -32,6 +32,7 @@ public class LinkedList {
         if (index <=0){
             created.setNext(head);
             head = created;
+            return created;
         }
 
         if (index >= length) {
@@ -62,17 +63,21 @@ public class LinkedList {
 
 
     public void reverse(){
-        NodeLinkedList first = head;
-        NodeLinkedList currentNode = head.getNext();
+        if(!head.equals(tail)){
+            NodeLinkedList first = head;
+            NodeLinkedList currentNode = head.getNext();
 
-        while (currentNode !=null){
-            NodeLinkedList nextNode = currentNode.getNext();
-            currentNode.setNext(first);
-            first = currentNode;
-            currentNode = nextNode;
+            tail = head;
+
+            while (currentNode !=null){
+                NodeLinkedList nextNode = currentNode.getNext();
+                currentNode.setNext(first);
+                first = currentNode;
+                currentNode = nextNode;
+            }
+            head.setNext(null);
+            head = first;
         }
-        head.setNext(null);
-        head = first;
     }
 
     public void print() {
