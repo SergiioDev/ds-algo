@@ -60,6 +60,21 @@ public class LinkedList {
         length--;
     }
 
+
+    public void reverse(){
+        NodeLinkedList first = head;
+        NodeLinkedList currentNode = head.getNext();
+
+        while (currentNode !=null){
+            NodeLinkedList nextNode = currentNode.getNext();
+            currentNode.setNext(first);
+            first = currentNode;
+            currentNode = nextNode;
+        }
+        head.setNext(null);
+        head = first;
+    }
+
     public void print() {
         NodeLinkedList currentNode = head;
         while (currentNode != null) {
