@@ -2,6 +2,7 @@ package datastructures.stacks;
 
 import datastructures.linkedlists.singlylinkedlist.NodeLinkedList;
 
+// Implementation of a Stack using linked list
 public class Stack {
     NodeLinkedList top;
     NodeLinkedList bottom;
