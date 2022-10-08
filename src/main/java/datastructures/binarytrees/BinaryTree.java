@@ -17,7 +17,7 @@ public class BinaryTree {
         BinaryTreeNode current = root;
 
         while(true){
-            if (value > current.getData()){
+            if (value >= current.getData()){
                 if (current.getRight() == null){
                     current.setRight(created);
                     return;
