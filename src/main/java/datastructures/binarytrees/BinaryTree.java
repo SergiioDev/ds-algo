@@ -7,24 +7,26 @@ public class BinaryTree {
         root = null;
     }
 
-    public void insert(BinaryTreeNode node){
+    public void insert(int value){
+        BinaryTreeNode created = new BinaryTreeNode(value);
         if (root == null){
-            root = node;
+            root = created;
+            return;
         }
 
         BinaryTreeNode current = root;
 
-        while(current != null){
-            if (node.getData() > current.getData()){
+        while(true){
+            if (value > current.getData()){
                 if (current.getRight() == null){
-                    current.setRight(node);
+                    current.setRight(created);
                     return;
                 }
                 current = current.getRight();
 
             }else {
                 if(current.getLeft() == null){
-                    current.setLeft(node);
+                    current.setLeft(created);
                     return;
                 }
                 current = current.getLeft();
@@ -33,5 +35,19 @@ public class BinaryTree {
 
         }
     }
+
+    public int lookup(int value){
+        BinaryTreeNode current = root;
+        while(true){
+            if (value > current.getData()){
+                current = current.getRight();
+            }else if (value < current.getData()){
+                current = current.getLeft();
+            }else if (value == current.getData()){
+                return value;
+            }
+        }
+    }
+
 
 }
