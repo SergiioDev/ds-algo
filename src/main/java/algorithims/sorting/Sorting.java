@@ -15,4 +15,29 @@ public class Sorting {
         return numbers;
     }
 
+
+    public static int[] selectionSort(int[] numbers){
+
+        for (int i = 0; i < numbers.length; i++) {
+            int smallest = numbers[i];
+            int smallestIndex = -1;
+            for (int j = i; j < numbers.length ; j++) {
+                if (smallest > numbers[j]){
+                    smallest = numbers[j];
+                    smallestIndex = j;
+                }
+
+            }
+
+            if (smallestIndex>=0){
+                int temp = numbers[i];
+                numbers[i] = smallest;
+                numbers[smallestIndex] = temp;
+            }
+
+        }
+
+        return numbers;
+    }
+
 }
