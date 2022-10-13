@@ -62,4 +62,57 @@ public class Sorting {
         return numbers;
     }
 
+    public static void mergeSort(int[] numbers){
+        int n = numbers.length;
+        if (n < 2){
+            return;
+        }
+
+        int mid = n/2;
+
+        int[] left = new int[mid];
+        int [] right = new int[n-mid];
+
+        for (int i = 0; i < left.length; i++) {
+            left[i] = numbers[i];
+        }
+
+        for (int i = mid; i < numbers.length; i++) {
+            right[i - mid] = numbers[i];
+        }
+
+        mergeSort(left);
+        mergeSort(right);
+        merge(numbers, left, right);
+
+    }
+
+    private static void merge(int[] numbers, int[] left, int[] right) {
+        int i = 0, j = 0, k =0;
+
+        while (i < left.length && j < right.length){
+            if (left[i] < right[j]){
+                numbers[k] = left[i];
+                i++;
+            }else{
+                numbers[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+
+
+        while( i < left.length){
+            numbers[k] = left[i];
+            i++;
+            k++;
+        }
+
+        while( j < right.length){
+            numbers[k] = right[j];
+            j++;
+            k++;
+        }
+
+    }
 }
