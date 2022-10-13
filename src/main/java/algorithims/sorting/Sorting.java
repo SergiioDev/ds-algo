@@ -2,12 +2,12 @@ package algorithims.sorting;
 
 public class Sorting {
 
-    public static int[] bubbleShort(int[] numbers){
-        for (int i = 0; i < numbers.length -1; i++) {
-            for (int j = 0; j < numbers.length -1; j++) {
-                if(numbers[j] > numbers[j+1]){
-                    int temp = numbers[j+1];
-                    numbers[j+1] = numbers[j];
+    public static int[] bubbleShort(int[] numbers) {
+        for (int i = 0; i < numbers.length - 1; i++) {
+            for (int j = 0; j < numbers.length - 1; j++) {
+                if (numbers[j] > numbers[j + 1]) {
+                    int temp = numbers[j + 1];
+                    numbers[j + 1] = numbers[j];
                     numbers[j] = temp;
                 }
             }
@@ -16,20 +16,20 @@ public class Sorting {
     }
 
 
-    public static int[] selectionSort(int[] numbers){
+    public static int[] selectionSort(int[] numbers) {
 
         for (int i = 0; i < numbers.length; i++) {
             int smallest = numbers[i];
             int smallestIndex = -1;
-            for (int j = i; j < numbers.length ; j++) {
-                if (smallest > numbers[j]){
+            for (int j = i; j < numbers.length; j++) {
+                if (smallest > numbers[j]) {
                     smallest = numbers[j];
                     smallestIndex = j;
                 }
 
             }
 
-            if (smallestIndex>=0){
+            if (smallestIndex >= 0) {
                 int temp = numbers[i];
                 numbers[i] = smallest;
                 numbers[smallestIndex] = temp;
@@ -41,20 +41,20 @@ public class Sorting {
     }
 
 
-    public static int[] insertionSort(int[] numbers){
-        for (int i = 0; i < numbers.length - 1 ; i++) {
+    public static int[] insertionSort(int[] numbers) {
+        for (int i = 0; i < numbers.length - 1; i++) {
 
-            if(numbers[i] > numbers[i+1]){
+            if (numbers[i] > numbers[i + 1]) {
                 int temp = numbers[i];
-                numbers[i] = numbers[i+1];
-                numbers[i+1] = temp;
+                numbers[i] = numbers[i + 1];
+                numbers[i + 1] = temp;
             }
 
             int j = i;
 
-            while ( j>0 &&  numbers[j] < numbers[j-1] ){
-                int temp = numbers[j-1];
-                numbers[j-1] = numbers[j];
+            while (j > 0 && numbers[j] < numbers[j - 1]) {
+                int temp = numbers[j - 1];
+                numbers[j - 1] = numbers[j];
                 numbers[j] = temp;
                 j--;
             }
@@ -62,16 +62,16 @@ public class Sorting {
         return numbers;
     }
 
-    public static void mergeSort(int[] numbers){
+    public static void mergeSort(int[] numbers) {
         int n = numbers.length;
-        if (n < 2){
+        if (n < 2) {
             return;
         }
 
-        int mid = n/2;
+        int mid = n / 2;
 
         int[] left = new int[mid];
-        int [] right = new int[n-mid];
+        int[] right = new int[n - mid];
 
         for (int i = 0; i < left.length; i++) {
             left[i] = numbers[i];
@@ -88,13 +88,13 @@ public class Sorting {
     }
 
     private static void merge(int[] numbers, int[] left, int[] right) {
-        int i = 0, j = 0, k =0;
+        int i = 0, j = 0, k = 0;
 
-        while (i < left.length && j < right.length){
-            if (left[i] < right[j]){
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
                 numbers[k] = left[i];
                 i++;
-            }else{
+            } else {
                 numbers[k] = right[j];
                 j++;
             }
@@ -102,17 +102,21 @@ public class Sorting {
         }
 
 
-        while( i < left.length){
+        while (i < left.length) {
             numbers[k] = left[i];
             i++;
             k++;
         }
 
-        while( j < right.length){
+        while (j < right.length) {
             numbers[k] = right[j];
             j++;
             k++;
         }
 
     }
+
+
 }
+
+
