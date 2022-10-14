@@ -1,5 +1,7 @@
 package algorithims.sorting;
 
+import java.util.Random;
+
 public class Sorting {
 
     public static int[] bubbleShort(int[] numbers) {
@@ -114,6 +116,52 @@ public class Sorting {
             k++;
         }
 
+    }
+
+
+
+    public static void quickSort(int[] array, int lowIndex, int highIndex){
+        if (lowIndex >= highIndex){
+            return;
+        }
+
+        int leftPointer = lowIndex;
+        int rightPointer = highIndex;
+
+        int pivotIndex = new Random().nextInt(highIndex - lowIndex) + lowIndex;
+        int pivot = array[pivotIndex];
+        swapElements(array, pivotIndex, highIndex);
+
+        while (leftPointer < rightPointer){
+
+            while(array[leftPointer] <= pivot && leftPointer < rightPointer){
+                leftPointer++;
+            }
+
+            while(array[rightPointer] >= pivot && leftPointer < rightPointer){
+                rightPointer--;
+            }
+
+            swapElements(array,leftPointer,rightPointer);
+
+        }
+
+        if(array[leftPointer] > pivot){
+            swapElements(array,leftPointer,highIndex);
+        }else{
+            leftPointer = highIndex;
+        }
+
+        quickSort(array,lowIndex,leftPointer - 1);
+
+        quickSort(array,leftPointer + 1,highIndex);
+
+    }
+
+    private static void swapElements(int[] array, int element1, int element2){
+        int temp = array[element1];
+        array[element1] = array[element2];
+        array[element2] = temp;
     }
 
 }
