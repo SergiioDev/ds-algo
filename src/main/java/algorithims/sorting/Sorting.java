@@ -118,10 +118,8 @@ public class Sorting {
 
     }
 
-
-
-    public static void quickSort(int[] array, int lowIndex, int highIndex){
-        if (lowIndex >= highIndex){
+    public static void quickSort(int[] array, int lowIndex, int highIndex) {
+        if (lowIndex >= highIndex) {
             return;
         }
 
@@ -132,33 +130,33 @@ public class Sorting {
         int pivot = array[pivotIndex];
         swapElements(array, pivotIndex, highIndex);
 
-        while (leftPointer < rightPointer){
+        while (leftPointer < rightPointer) {
 
-            while(array[leftPointer] <= pivot && leftPointer < rightPointer){
+            while (array[leftPointer] <= pivot && leftPointer < rightPointer) {
                 leftPointer++;
             }
 
-            while(array[rightPointer] >= pivot && leftPointer < rightPointer){
+            while (array[rightPointer] >= pivot && leftPointer < rightPointer) {
                 rightPointer--;
             }
 
-            swapElements(array,leftPointer,rightPointer);
+            swapElements(array, leftPointer, rightPointer);
 
         }
 
-        if(array[leftPointer] > pivot){
-            swapElements(array,leftPointer,highIndex);
-        }else{
+        if (array[leftPointer] > pivot) {
+            swapElements(array, leftPointer, highIndex);
+        } else {
             leftPointer = highIndex;
         }
 
-        quickSort(array,lowIndex,leftPointer - 1);
+        quickSort(array, lowIndex, leftPointer - 1);
 
-        quickSort(array,leftPointer + 1,highIndex);
+        quickSort(array, leftPointer + 1, highIndex);
 
     }
 
-    private static void swapElements(int[] array, int element1, int element2){
+    private static void swapElements(int[] array, int element1, int element2) {
         int temp = array[element1];
         array[element1] = array[element2];
         array[element2] = temp;
