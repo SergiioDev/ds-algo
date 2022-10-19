@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 class Valid {
-
+    // Time complexity: O(n) n = length of the string
     public boolean isValid(String s) {
 
         if (s.length() == 1){
