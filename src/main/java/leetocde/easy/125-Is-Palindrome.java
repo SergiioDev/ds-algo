@@ -1,6 +1,6 @@
 package leetocde.easy;
 
-class Solution {
+class Palindrome {
 
     public boolean isPalindrome(String s) {
         s = s.toLowerCase();
