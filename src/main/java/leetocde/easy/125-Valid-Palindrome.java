@@ -1,7 +1,6 @@
 package leetocde.easy;
 
 class Palindrome {
-    // Time complexity O(n) n = length of the string
     public boolean isPalindrome(String s) {
         s = s.toLowerCase();
         int left = 0, right = s.length() - 1;
