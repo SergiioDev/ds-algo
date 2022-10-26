@@ -110,50 +110,30 @@ public class Sorting {
 
     }
 
-    public static void quickSort(int[] array, int lowIndex, int highIndex) {
-        if (lowIndex >= highIndex) {
-            return;
+    public static int[] quickSort(int[]nums, int l, int r) {
+        if (l - r + 1 <= 1) {
+            return nums;
         }
 
-        int leftPointer = lowIndex;
-        int rightPointer = highIndex;
+        int pivot = nums[r];
+        int left = l;
 
-        int pivotIndex = new Random().nextInt(highIndex - lowIndex) + lowIndex;
-        int pivot = array[pivotIndex];
-        swapElements(array, pivotIndex, highIndex);
-
-        while (leftPointer < rightPointer) {
-
-            while (array[leftPointer] <= pivot && leftPointer < rightPointer) {
-                leftPointer++;
+        for (int i = 0; i < r; i++) {
+            if (nums[i] < pivot) {
+                int tmp = nums[left];
+                nums[left] = nums[i];
+                nums[i] = tmp;
+                left++;
             }
-
-            while (array[rightPointer] >= pivot && leftPointer < rightPointer) {
-                rightPointer--;
-            }
-
-            swapElements(array, leftPointer, rightPointer);
-
         }
+        nums[r] = nums[left];
+        nums[left] = pivot;
 
-        if (array[leftPointer] > pivot) {
-            swapElements(array, leftPointer, highIndex);
-        } else {
-            leftPointer = highIndex;
-        }
+        quickSort(nums, l, left - 1);
+        quickSort(nums, left + 1, r);
 
-        quickSort(array, lowIndex, leftPointer - 1);
-
-        quickSort(array, leftPointer + 1, highIndex);
-
+        return nums;
     }
-
-    private static void swapElements(int[] array, int element1, int element2) {
-        int temp = array[element1];
-        array[element1] = array[element2];
-        array[element2] = temp;
-    }
-
 }
 
 
