@@ -58,7 +58,7 @@ public class Sorting {
 
     public static void mergeSort(int[] numbers) {
         int n = numbers.length;
-        if (n < 2) {
+        if (n <= 1) {
             return;
         }
 
@@ -85,7 +85,7 @@ public class Sorting {
         int i = 0, j = 0, k = 0;
 
         while (i < left.length && j < right.length) {
-            if (left[i] < right[j]) {
+            if (left[i] <= right[j]) {
                 numbers[k] = left[i];
                 i++;
             } else {
