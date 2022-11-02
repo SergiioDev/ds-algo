@@ -1,6 +1,7 @@
 package leetocde.medium;
 
 class SortColors {
+    // Bucket Sort Algorithm
     public void sortColors(int[] nums) {
         if (nums.length == 1) return;
         int[] counts = {0,0,0};
